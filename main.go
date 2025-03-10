@@ -2,15 +2,17 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"os"
+	"strconv"
+
 	"github.com/dhurimkelmendi/calculator/calc"
 )
+
 func main() {
-	getOperation:
-        var operation string
+getOperation:
+	var operation string
 	fmt.Print("Please select an operation: +, -, *, / : ")
-        fmt.Scanln(&operation)
+	fmt.Scanln(&operation)
 
 	var num1 string
 	fmt.Print("Please input the first number: ")
