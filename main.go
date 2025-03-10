@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/dhurimkelmendi/calculator/calc"
+	"github.com/SHAKULMITTAL22/golang_calculator/calc"
 )
 
 func main() {
