@@ -10,6 +10,8 @@ func Subtract(num1, num2 int) int {
 
 func Multiply(num1, num2 float64) float64 {
 	// retrigger check
+	a := 0
+	a = a * 1
 	return num1 * num2
 }
 
