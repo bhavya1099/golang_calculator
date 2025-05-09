@@ -53,6 +53,7 @@ getOperation:
 }
 
 func stringToInt(str string) int {
+	//additional comments
 	i, err := strconv.Atoi(str)
 	if err != nil {
 		fmt.Println(err)
