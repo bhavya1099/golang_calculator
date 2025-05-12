@@ -18,12 +18,6 @@ type multiplyTestData struct {
 	num1, num2, expectedResult float64
 }
 
-/*
-ROOST_METHOD_HASH=Divide_052b9c25ea
-ROOST_METHOD_SIG_HASH=Divide_15b7594322
-
-FUNCTION_DEF=func Divide(num1, num2 float64) float64
-*/
 func TestDivideGoTest(t *testing.T) {
 
 	var got float64
@@ -55,12 +49,6 @@ func TestDivideGoTest(t *testing.T) {
 
 }
 
-/*
-ROOST_METHOD_HASH=Multiply_1585632006
-ROOST_METHOD_SIG_HASH=Multiply_d6ab1fb07f
-
-FUNCTION_DEF=func Multiply(num1, num2 float64) float64
-*/
 func TestMultiply(t *testing.T) {
 	for _, test := range testData {
 		t.Run("Testing Multiply function", func(t *testing.T) {
@@ -81,12 +69,6 @@ func TestMultiply(t *testing.T) {
 	}
 }
 
-/*
-ROOST_METHOD_HASH=Subtract_559013d27f
-ROOST_METHOD_SIG_HASH=Subtract_29b74c09c9
-
-FUNCTION_DEF=func Subtract(num1, num2 int) int
-*/
 func TestSubtract(t *testing.T) {
 	scenarios := []struct {
 		desc   string
