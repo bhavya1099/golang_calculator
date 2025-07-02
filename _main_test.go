@@ -1,27 +1,21 @@
+
+// ********RoostGPT********
+/*
+
+roost_feedback [02/07/2025, 3:38:01 PM]:remove compilation errors if any\n\n
+*/
+
+// ********RoostGPT********
+
 package main
 
 import (
-	fmt "fmt"
-	os "os"
-	strconv "strconv"
-	testing "testing"
-	debug "runtime/debug"
+	"os"
+	"strconv"
+	"testing"
+	"runtime/debug"
 )
 
-
-
-
-
-
-
-
-/*
-ROOST_METHOD_HASH=stringToFloat64_d38659cd50
-ROOST_METHOD_SIG_HASH=stringToFloat64_44e80853e6
-
-FUNCTION_DEF=func stringToFloat64(str string) float64 
-
-*/
 func TestStringToFloat64(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -44,18 +38,9 @@ func TestStringToFloat64(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			defer func() {
 				if r := recover(); r != nil {
-					t.Logf("Panic encountered for test '%s'. Recovering gracefully.\nReason: %v\n%s", test.name, r, debug.Stack())
-					t.Fail()
+					t.Errorf("Panic encountered for test '%s'. Reason: %v\n%s", test.name, r, debug.Stack())
 				}
 			}()
-
-			stdout := &os.File{}
-			oldStdOut := os.Stdout
-			defer func() {
-				os.Stdout = oldStdOut
-				t.Log("Restored os.Stdout successfully")
-			}()
-			os.Stdout = stdout
 
 			var result float64
 			var exitCode int
@@ -72,32 +57,17 @@ func TestStringToFloat64(t *testing.T) {
 			if exitCode == 2 {
 				if test.expected != 2 {
 					t.Errorf("Test '%s' failed: expected no error, but got error (os.Exit code %d)", test.name, exitCode)
-				} else {
-					t.Logf("Test '%s' passed: os.Exit code matched expected (%d)", test.name, exitCode)
 				}
 			} else if expectedFloat, ok := test.expected.(float64); ok {
 				if result != expectedFloat {
 					t.Errorf("Test '%s' failed: expected %f, got %f", test.name, expectedFloat, result)
-				} else {
-					t.Logf("Test '%s' passed: expected value matched (%f)", test.name, expectedFloat)
 				}
-			} else {
-				t.Errorf("Test '%s' invalid test case definition", test.name)
 			}
 		})
 	}
 }
 
-
-/*
-ROOST_METHOD_HASH=stringToInt_73b9cbccee
-ROOST_METHOD_SIG_HASH=stringToInt_e7cc66ec50
-
-FUNCTION_DEF=func stringToInt(str string) int 
-
-*/
 func TestStringToInt(t *testing.T) {
-
 	testCases := []struct {
 		name     string
 		input    string
@@ -138,25 +108,16 @@ func TestStringToInt(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-
 			defer func() {
 				if r := recover(); r != nil {
-					t.Logf("Panic encountered, test failed with input '%v'. Reason: %v\n%s", tc.input, r, string(debug.Stack()))
-					t.Fail()
+					t.Errorf("Panic encountered, test failed with input '%v'. Reason: %v\n%s", tc.input, r, debug.Stack())
 				}
 			}()
-
-			r, w, err := os.Pipe()
-			if err != nil {
-				t.Fatalf("Failed to create pipe for stdout redirection: %v", err)
-			}
-			os.Stdout = w
 
 			var result int
 			func() {
 				defer func() {
 					if r := recover(); r != nil {
-
 						t.Logf("os.Exit called for input '%s', expected error scenario", tc.input)
 					}
 				}()
@@ -164,23 +125,15 @@ func TestStringToInt(t *testing.T) {
 				result = stringToInt(tc.input)
 			}()
 
-			w.Close()
-			os.Stdout = os.NewFile(uintptr(r.Fd()), "/dev/tty")
-
 			if tc.wantErr {
-
 				if result != tc.expected {
 					t.Errorf("Expected os.Exit on invalid input '%v', but function returned '%v'", tc.input, result)
 				}
 			} else {
-
 				if result != tc.expected {
 					t.Errorf("Expected %d for input '%v', but got %d", tc.expected, tc.input, result)
-				} else {
-					t.Logf("Success: Input '%v' converted to integer %d correctly.", tc.input, result)
 				}
 			}
 		})
 	}
 }
-
