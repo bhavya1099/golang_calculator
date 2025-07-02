@@ -16,14 +16,6 @@ import (
 
 
 
-
-/*
-ROOST_METHOD_HASH=Add_38f6779755
-ROOST_METHOD_SIG_HASH=Add_8e349a90e1
-
-FUNCTION_DEF=func Add(num1, num2 int) int 
-
-*/
 func TestAdd(t *testing.T) {
 	type testCase struct {
 		name     string
@@ -151,14 +143,6 @@ func TestAdd(t *testing.T) {
 	r.Close()
 }
 
-
-/*
-ROOST_METHOD_HASH=Divide_052b9c25ea
-ROOST_METHOD_SIG_HASH=Divide_15b7594322
-
-FUNCTION_DEF=func Divide(num1, num2 float64) float64 
-
-*/
 func TestDivide(t *testing.T) {
 	type testCase struct {
 		num1   float64
@@ -272,14 +256,6 @@ func TestDivide(t *testing.T) {
 	})
 }
 
-
-/*
-ROOST_METHOD_HASH=Subtract_559013d27f
-ROOST_METHOD_SIG_HASH=Subtract_29b74c09c9
-
-FUNCTION_DEF=func Subtract(num1, num2 int) int 
-
-*/
 func TestSubtract(t *testing.T) {
 
 	tests := []struct {
