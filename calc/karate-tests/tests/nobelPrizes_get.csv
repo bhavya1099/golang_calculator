@@ -1,0 +1,3 @@
+offset,limit,sort,nobelPrizeYear,yearTo,nobelPrizeCategory,format,csvLang
+"1","10","asc","2000","2020","['physics']","['json']","['en']"
+"5","20","desc","1990","2000","['chemistry']","['json']","['en']"
